@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="10dp" tools:context=".DetailsFragment"
+    android:id="@+id/contact_fragment"
+    android:tag="@string/detail_fragment_tag">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/large_image_view"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/favorite_image_view"
+                    android:src="@android:drawable/star_on"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:id="@+id/textView"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@id/favorite_image_view"
+                    android:layout_toEndOf="@+id/large_image_view"
+                    android:autoText="false"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:textIsSelectable="false"
+                    android:layout_marginTop="15dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_text_view"
+                    android:autoText="false"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:textIsSelectable="false"
+                    android:layout_below="@+id/textView"
+                    android:layout_toEndOf="@+id/large_image_view" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Company"
+                    android:id="@+id/company_label_text_view"
+                    android:autoText="false"
+                    android:textColor="#ff000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:textIsSelectable="false"
+                    android:layout_below="@+id/name_text_view"
+                    android:layout_toEndOf="@+id/large_image_view"
+                    android:layout_marginTop="31dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/company_text_view"
+                    android:autoText="false"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:textIsSelectable="false"
+                    android:layout_below="@+id/company_label_text_view"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/large_image_view" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:id="@+id/phone_label_text_view"
+                android:autoText="false"
+                android:textColor="#ff000000"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textIsSelectable="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone_text_view"
+                android:autoText="false"
+                android:textSize="20dp"
+                android:textIsSelectable="false"
+                android:layout_below="@+id/phone_label_text_view"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone_type_text_view"
+                android:autoText="false"
+                android:textSize="20dp"
+                android:layout_alignParentRight="true"
+                android:textIsSelectable="false"
+                android:layout_below="@+id/phone_label_text_view" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:id="@+id/address_label_text_view"
+            android:autoText="false"
+            android:textColor="#ff000000"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/address_text_view"
+            android:autoText="false"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/phone_label_text_view"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/state_text_view"
+            android:autoText="false"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/phone_label_text_view"
+            android:layout_alignParentStart="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birthday"
+            android:id="@+id/birthdate_label_text_view"
+            android:autoText="false"
+            android:textColor="#ff000000"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/birthdate_text_view"
+            android:autoText="false"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/phone_label_text_view"
+            android:layout_alignParentStart="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/email_label_text_view"
+            android:autoText="false"
+            android:textColor="#ff000000"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_text_view"
+            android:autoText="false"
+            android:textSize="20dp"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/phone_label_text_view"
+            android:layout_alignParentStart="true" />
+    </LinearLayout>
+
+</LinearLayout>
