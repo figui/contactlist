@@ -1,8 +1,6 @@
 package com.solstice.codechallenge.contactlist;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.LruCache;

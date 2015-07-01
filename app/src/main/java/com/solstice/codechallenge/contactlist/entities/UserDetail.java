@@ -1,11 +1,14 @@
 package com.solstice.codechallenge.contactlist.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  * Created by snakepit on 27/06/2015.
  */
-public class UserDetail implements Serializable{
+public class UserDetail implements Parcelable {
 
     private Integer employeeId;
     private Boolean favorite;
@@ -60,5 +63,20 @@ public class UserDetail implements Serializable{
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(employeeId);
+        dest.writeBooleanArray(new boolean[]{favorite});
+        dest.writeString(largeImageURL);
+        dest.writeString(email);
+        dest.writeString(website);
+        dest.writeParcelable(address, flags);
     }
 }

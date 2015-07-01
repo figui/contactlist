@@ -1,11 +1,14 @@
 package com.solstice.codechallenge.contactlist.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  * Created by snakepit on 27/06/2015.
  */
-public class Address implements Serializable {
+public class Address implements Parcelable {
 
     private String street;
     private String city;
@@ -14,6 +17,17 @@ public class Address implements Serializable {
     private String zip;
     private Double latitude;
     private Double longitude;
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(street);
+        dest.writeString(city);
+        dest.writeString(state);
+        dest.writeString((country));
+        dest.writeString(zip);
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
+    }
 
     public String getStreet() {
         return street;
@@ -69,5 +83,10 @@ public class Address implements Serializable {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 }

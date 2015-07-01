@@ -1,18 +1,14 @@
 package com.solstice.codechallenge.contactlist;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.LruCache;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.solstice.codechallenge.contactlist.task.ContactTask;
-
-import java.util.List;
 
 
 /**
@@ -24,9 +20,13 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ListView listView = (ListView)view.findViewById(R.id.listView);
+        RecyclerView listView = (RecyclerView) view.findViewById(R.id.listView);
         MainActivity a = (MainActivity) getActivity();
         ContactTask task = new ContactTask(getActivity(), listView);
+        LinearLayoutManager layout = new LinearLayoutManager(getActivity());
+        layout.setOrientation(LinearLayoutManager.VERTICAL);
+        listView.setLayoutManager(layout);
+        listView.setHasFixedSize(true);
         if(a.getContactList() != null && !a.getContactList().isEmpty()) {
             task.setContactList(a.getContactList());
         } else {

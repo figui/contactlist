@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.solstice.codechallenge.contactlist"
-        minSdkVersion 22
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -20,5 +20,9 @@ android {
 }
 
 dependencies {
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:recyclerview-v7:22.0.+'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
