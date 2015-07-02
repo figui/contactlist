@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.solstice.codechallenge.contactlist.R;
 import com.solstice.codechallenge.contactlist.adapters.ContactsAdapter;
 import com.solstice.codechallenge.contactlist.entities.User;
 import com.solstice.codechallenge.contactlist.services.ContactService;
 
 import java.util.List;
 
+import butterknife.Bind;
 import retrofit.RestAdapter;
 
 /**

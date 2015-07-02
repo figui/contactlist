@@ -18,6 +18,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by snakepit on 27/06/2015.
  */
@@ -53,8 +56,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
+        @Bind(R.id.contact_text_view)
         public TextView name;
+        @Bind(R.id.phone_text_view)
         public TextView phone;
+        @Bind(R.id.small_image_view)
         public ImageView pic;
         private List<User> users;
 
@@ -62,9 +68,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             super(v);
             this.users = users;
             v.setOnClickListener(this);
-            name = (TextView)v.findViewById(R.id.contact_text_view);
-            phone = (TextView)v.findViewById(R.id.phone_text_view);
-            pic = (ImageView)v.findViewById(R.id.small_image_view);
+            ButterKnife.bind(this, v);
         }
 
         @Override

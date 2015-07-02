@@ -14,8 +14,8 @@ import retrofit.http.Path;
 public interface ContactService {
 
     @GET("/external/contacts.json")
-    public List<User> getContacts();
+    List<User> getContacts();
 
     @GET("/external/Contacts/id/{id}.json")
-    public UserDetail getDetails(@Path("id") int id);
+    UserDetail getDetails(@Path("id") int id);
 }

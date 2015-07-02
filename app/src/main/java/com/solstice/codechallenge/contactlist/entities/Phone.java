@@ -3,8 +3,6 @@ package com.solstice.codechallenge.contactlist.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by snakepit on 27/06/2015.
  */
@@ -13,6 +11,24 @@ public class Phone implements Parcelable {
     private String home;
     private String work;
     private String mobile;
+
+    // Default constructor
+    public Phone() {}
+
+    public Phone(Parcel in) {
+        this.writeToParcel(in, 0);
+    }
+
+    public static final Parcelable.Creator<Phone> CREATOR
+            = new Parcelable.Creator<Phone>() {
+        public Phone createFromParcel(Parcel in) {
+            return new Phone(in);
+        }
+
+        public Phone[] newArray(int size) {
+            return new Phone[size];
+        }
+    };
 
     public String getHome() {
         return home;

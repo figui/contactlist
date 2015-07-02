@@ -15,6 +15,7 @@ import com.solstice.codechallenge.contactlist.entities.UserDetail;
 import com.solstice.codechallenge.contactlist.services.ContactService;
 import com.squareup.picasso.Picasso;
 
+import butterknife.ButterKnife;
 import retrofit.RestAdapter;
 
 /**
@@ -25,7 +26,6 @@ public class DetailTask extends AsyncTask<String, Void, UserDetail> {
     private final String TAG = DetailTask.class.getSimpleName();
     private Context ctx;
     private User user;
-
     public DetailTask(Context ctx, User user) {
         this.ctx = ctx;
         this.user = user;
@@ -54,17 +54,16 @@ public class DetailTask extends AsyncTask<String, Void, UserDetail> {
 
         if(userDetail != null) {
             Activity a = (MainActivity) ctx;
-
-            TextView name = (TextView) a.findViewById(R.id.name_text_view);
-            TextView company = (TextView) a.findViewById(R.id.company_text_view);
-            TextView phone = (TextView) a.findViewById(R.id.phone_text_view);
-            TextView phoneType = (TextView) a.findViewById(R.id.phone_type_text_view);
-            TextView address = (TextView) a.findViewById(R.id.address_text_view);
-            TextView state = (TextView) a.findViewById(R.id.state_text_view);
-            TextView birth = (TextView) a.findViewById(R.id.birthdate_text_view);
-            TextView email = (TextView) a.findViewById(R.id.email_text_view);
-            ImageView favorite = (ImageView) a.findViewById(R.id.favorite_image_view);
-            ImageView avatar = (ImageView) a.findViewById(R.id.large_image_view);
+            TextView name = ButterKnife.findById(a, R.id.name_text_view);
+            TextView company = ButterKnife.findById(a, R.id.company_text_view);
+            TextView phone = ButterKnife.findById(a, R.id.phone_text_view);
+            TextView phoneType = ButterKnife.findById(a, R.id.phone_type_text_view);
+            TextView address = ButterKnife.findById(a, R.id.address_text_view);
+            TextView state = ButterKnife.findById(a, R.id.state_text_view);
+            TextView birth = ButterKnife.findById(a, R.id.birthdate_text_view);
+            TextView email = ButterKnife.findById(a, R.id.email_text_view);
+            ImageView avatar = ButterKnife.findById(a, R.id.large_image_view);
+            ImageView favorite = ButterKnife.findById(a, R.id.favorite_image_view);
             Picasso.with(a).load(userDetail.getLargeImageURL()).into(avatar);
 
             name.setText(String.valueOf(user.getName()));

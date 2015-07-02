@@ -3,7 +3,6 @@ package com.solstice.codechallenge.contactlist.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,6 +18,24 @@ public class User implements Parcelable {
     private String smallImageURL;
     private Long birthdate;
     private Phone phone;
+
+    // Default constructor
+    public User() {}
+
+    public User(Parcel in) {
+        this.writeToParcel(in, 0);
+    }
+
+    public static final Parcelable.Creator<User> CREATOR
+            = new Parcelable.Creator<User>() {
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getName() {
         return name;

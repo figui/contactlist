@@ -3,8 +3,6 @@ package com.solstice.codechallenge.contactlist.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by snakepit on 27/06/2015.
  */
@@ -16,6 +14,24 @@ public class UserDetail implements Parcelable {
     private String email;
     private String website;
     private Address address;
+
+    // Default constructor
+    public UserDetail() {}
+
+    public UserDetail(Parcel in) {
+        this.writeToParcel(in, 0);
+    }
+
+    public static final Parcelable.Creator<UserDetail> CREATOR
+            = new Parcelable.Creator<UserDetail>() {
+        public UserDetail createFromParcel(Parcel in) {
+            return new UserDetail(in);
+        }
+
+        public UserDetail[] newArray(int size) {
+            return new UserDetail[size];
+        }
+    };
 
     public Integer getEmployeeId() {
         return employeeId;

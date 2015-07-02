@@ -21,7 +21,7 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         Bundle arg = getArguments();
-        User user = (User)arg.getParcelable(getString(R.string.details_url_key));
+        User user = arg.getParcelable(getString(R.string.details_url_key));
         DetailTask task = new DetailTask(getActivity(), user);
         task.execute(user.getDetailsURL());
         View view = inflater.inflate(R.layout.fragment_details, container, false);

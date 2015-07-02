@@ -3,8 +3,6 @@ package com.solstice.codechallenge.contactlist.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by snakepit on 27/06/2015.
  */
@@ -18,6 +16,13 @@ public class Address implements Parcelable {
     private Double latitude;
     private Double longitude;
 
+    // Default constructor
+    public Address() {}
+
+    public Address(Parcel in) {
+        this.writeToParcel(in, 0);
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(street);
@@ -28,6 +33,18 @@ public class Address implements Parcelable {
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
     }
+
+    public static final Parcelable.Creator<Address> CREATOR
+            = new Parcelable.Creator<Address>() {
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
+
 
     public String getStreet() {
         return street;

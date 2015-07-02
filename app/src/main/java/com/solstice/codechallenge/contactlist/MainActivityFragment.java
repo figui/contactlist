@@ -10,17 +10,22 @@ import android.view.ViewGroup;
 
 import com.solstice.codechallenge.contactlist.task.ContactTask;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+    @Bind(R.id.listView)
+    RecyclerView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        RecyclerView listView = (RecyclerView) view.findViewById(R.id.listView);
+        ButterKnife.bind(this, view);
         MainActivity a = (MainActivity) getActivity();
         ContactTask task = new ContactTask(getActivity(), listView);
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
@@ -33,5 +38,11 @@ public class MainActivityFragment extends Fragment {
             task.execute();
         }
         return  view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }
