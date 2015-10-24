@@ -9,6 +9,7 @@ import android.view.View;
 import com.solstice.codechallenge.contactlist.R;
 import com.solstice.codechallenge.contactlist.adapters.ContactsAdapter;
 import com.solstice.codechallenge.contactlist.entities.User;
+import com.solstice.codechallenge.contactlist.helpers.EventHelper;
 import com.solstice.codechallenge.contactlist.services.ContactService;
 
 import java.util.List;
@@ -52,18 +53,7 @@ public class ContactTask extends AsyncTask<Void, Void, List<User>> {
         }
 
         if(users != null) {
-            setContactList(users);
+            EventHelper.post(users);
         }
-    }
-
-    public void setContactList(final List<User> users) {
-        listView.setAdapter(new ContactsAdapter(users, context));
-        listView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int position = listView.getChildAdapterPosition(v);
-
-            }
-        });
     }
 }

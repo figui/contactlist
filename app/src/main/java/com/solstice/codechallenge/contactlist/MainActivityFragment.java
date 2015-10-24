@@ -8,7 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.solstice.codechallenge.contactlist.adapters.ContactsAdapter;
+import com.solstice.codechallenge.contactlist.entities.User;
+import com.solstice.codechallenge.contactlist.helpers.EventHelper;
 import com.solstice.codechallenge.contactlist.task.ContactTask;
+import com.squareup.otto.Subscribe;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,8 +38,10 @@ public class MainActivityFragment extends Fragment {
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(layout);
         listView.setHasFixedSize(true);
+
+        EventHelper.register(this); // register Fragment in EventHelper to observe AsynTask completion
         if(a.getContactList() != null && !a.getContactList().isEmpty()) {
-            task.setContactList(a.getContactList());
+            onTaskComplete(a.getContactList());
         } else {
             task.execute();
         }
@@ -44,5 +52,17 @@ public class MainActivityFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+        EventHelper.unregister(this);
+    }
+
+    @Subscribe
+    public void onTaskComplete(List<User> users) {
+        listView.setAdapter(new ContactsAdapter(users, getActivity()));
+        listView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = listView.getChildAdapterPosition(v);
+            }
+        });
     }
 }
