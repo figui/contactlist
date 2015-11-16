@@ -1,1 +1,1 @@
-# contactlist app sample
+# Contact list Android app sample
