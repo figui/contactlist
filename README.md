@@ -1,2 +1,1 @@
-# contactlist
-Code Challenge solstice
+# Contact list Android app sample
