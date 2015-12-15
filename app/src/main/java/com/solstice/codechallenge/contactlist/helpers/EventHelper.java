@@ -1,5 +1,7 @@
 package com.solstice.codechallenge.contactlist.helpers;
 
+import com.solstice.codechallenge.contactlist.events.PostTaskExecute;
+import com.solstice.codechallenge.contactlist.events.PreTaskExecute;
 import com.squareup.otto.Bus;
 
 /**
@@ -7,6 +9,10 @@ import com.squareup.otto.Bus;
  */
 public class EventHelper {
     private static Bus instance = new Bus();
+
+    public static final PreTaskExecute PRE_TASK_EXECUTE_EVENT = new PreTaskExecute();
+
+    public static final PostTaskExecute POST_TASK_EXECUTE_EVENT = new PostTaskExecute();
 
     public static void post(Object o) {
         instance.post(o);

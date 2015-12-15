@@ -14,6 +14,7 @@ public class UserDetail implements Parcelable {
     private String email;
     private String website;
     private Address address;
+    private User user;
 
     // Default constructor
     public UserDetail() {}
@@ -81,6 +82,14 @@ public class UserDetail implements Parcelable {
         this.address = address;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -94,5 +103,6 @@ public class UserDetail implements Parcelable {
         dest.writeString(email);
         dest.writeString(website);
         dest.writeParcelable(address, flags);
+        dest.writeParcelable(user, flags);
     }
 }

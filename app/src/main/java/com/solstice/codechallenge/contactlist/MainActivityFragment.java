@@ -14,7 +14,7 @@ import com.solstice.codechallenge.contactlist.helpers.EventHelper;
 import com.solstice.codechallenge.contactlist.task.ContactTask;
 import com.squareup.otto.Subscribe;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -41,7 +41,7 @@ public class MainActivityFragment extends Fragment {
 
         EventHelper.register(this); // register Fragment in EventHelper to observe AsynTask completion
         if(a.getContactList() != null && !a.getContactList().isEmpty()) {
-            onTaskComplete(a.getContactList());
+            onTaskComplete((ArrayList) a.getContactList());
         } else {
             task.execute();
         }
@@ -56,7 +56,7 @@ public class MainActivityFragment extends Fragment {
     }
 
     @Subscribe
-    public void onTaskComplete(List<User> users) {
+    public void onTaskComplete(ArrayList<User> users) {
         listView.setAdapter(new ContactsAdapter(users, getActivity()));
         listView.setOnClickListener(new View.OnClickListener() {
             @Override

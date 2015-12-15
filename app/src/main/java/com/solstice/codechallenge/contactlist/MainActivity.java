@@ -4,15 +4,27 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.solstice.codechallenge.contactlist.entities.User;
+import com.solstice.codechallenge.contactlist.events.PostTaskExecute;
+import com.solstice.codechallenge.contactlist.events.PreTaskExecute;
+import com.solstice.codechallenge.contactlist.helpers.EventHelper;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private List<User> contactList;
+
+    @Bind(R.id.marker_progress)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         MainActivityFragment f = new MainActivityFragment();
         getFragmentManager().beginTransaction().add(R.id.fragment, f).commit();
+        ButterKnife.bind(this);
+        EventHelper.register(this);
     }
 
 
@@ -51,5 +65,15 @@ public class MainActivity extends ActionBarActivity {
 
     public void setContactList(List<User> contactList) {
         this.contactList = contactList;
+    }
+
+    @Subscribe
+    public void showProgress(PreTaskExecute event) {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Subscribe
+    public void hideProgress(PostTaskExecute event) {
+        progressBar.setVisibility(View.GONE);
     }
 }

@@ -4,24 +4,19 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
-import com.solstice.codechallenge.contactlist.R;
-import com.solstice.codechallenge.contactlist.adapters.ContactsAdapter;
 import com.solstice.codechallenge.contactlist.entities.User;
 import com.solstice.codechallenge.contactlist.helpers.EventHelper;
 import com.solstice.codechallenge.contactlist.services.ContactService;
 
 import java.util.List;
 
-import butterknife.Bind;
 import retrofit.RestAdapter;
 
 /**
  * Created by snakepit on 27/06/2015.
  */
 public class ContactTask extends AsyncTask<Void, Void, List<User>> {
-
     private final String TAG = ContactTask.class.getSimpleName();
     private RecyclerView listView;
     private Context context;
@@ -29,6 +24,12 @@ public class ContactTask extends AsyncTask<Void, Void, List<User>> {
     public ContactTask(Context context, RecyclerView listView) {
         this.context = context;
         this.listView = listView;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        EventHelper.post(EventHelper.PRE_TASK_EXECUTE_EVENT);
     }
 
     @Override
@@ -51,9 +52,9 @@ public class ContactTask extends AsyncTask<Void, Void, List<User>> {
         if(isCancelled()) {
             users = null;
         }
-
         if(users != null) {
             EventHelper.post(users);
+            EventHelper.post(EventHelper.POST_TASK_EXECUTE_EVENT);
         }
     }
 }
