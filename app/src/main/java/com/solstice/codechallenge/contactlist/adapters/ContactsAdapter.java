@@ -84,7 +84,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             nextFrag.setArguments(args);
             activity.getFragmentManager()
                 .beginTransaction()
-                .addToBackStack(oldFragment.getTag())
+                .addToBackStack(null)
                 .replace(R.id.fragment, nextFrag)
                 .commit();
         }

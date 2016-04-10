@@ -76,4 +76,13 @@ public class MainActivity extends ActionBarActivity {
     public void hideProgress(PostTaskExecute event) {
         progressBar.setVisibility(View.GONE);
     }
+
+    @Override
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

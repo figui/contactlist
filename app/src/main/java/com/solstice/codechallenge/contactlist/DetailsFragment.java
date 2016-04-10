@@ -70,8 +70,8 @@ public class DetailsFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         EventHelper.unregister(this);
+        super.onDestroyView();
     }
 
     @Subscribe
