@@ -57,6 +57,7 @@ public class MainActivityFragment extends Fragment {
 
     @Subscribe
     public void onTaskComplete(ArrayList<User> users) {
+        ((MainActivity) getActivity()).setContactList(users);
         listView.setAdapter(new ContactsAdapter(users, getActivity()));
         listView.setOnClickListener(new View.OnClickListener() {
             @Override
